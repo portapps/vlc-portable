@@ -3,16 +3,22 @@
 <p align="center">
   <a href="https://portapps.io/app/vlc-portable/#download"><img src="https://img.shields.io/github/release/portapps/vlc-portable.svg?style=flat-square" alt="GitHub release"></a>
   <a href="https://portapps.io/app/vlc-portable/#download"><img src="https://img.shields.io/github/downloads/portapps/vlc-portable/total.svg?style=flat-square" alt="Total downloads"></a>
-  <a href="https://github.com/portapps/portapps"><img src="https://img.shields.io/badge/portapps-1.22.0-479fdb.svg?style=flat-square" alt="Portapps version"></a>
+  <a href="https://github.com/portapps/portapps"><img src="https://img.shields.io/badge/portapps-1.23.0-479fdb.svg?style=flat-square" alt="Portapps version"></a>
   <a href="https://travis-ci.com/portapps/vlc-portable"><img src="https://img.shields.io/travis/com/portapps/vlc-portable/master.svg?style=flat-square" alt="Build Status"></a>
   <a href="https://goreportcard.com/report/github.com/portapps/vlc-portable"><img src="https://goreportcard.com/badge/github.com/portapps/vlc-portable?style=flat-square" alt="Go Report"></a>
   <a href="https://www.codacy.com/app/portapps/vlc-portable"><img src="https://img.shields.io/codacy/grade/10aa1a67c6154f7faab71fef032b4786.svg?style=flat-square" alt="Code Quality"></a>
   <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WQD7AQGPDEPSG"><img src="https://img.shields.io/badge/donate-paypal-7057ff.svg?style=flat-square" alt="Donate Paypal"></a>
 </p>
 
+## Notice of Non-Affiliation and Disclaimer
+
+Portapps is not affiliated, associated, authorized, endorsed by, or in any way officially connected with VLC Media Player, or any of its subsidiaries or its affiliates. The official VLC Media Player website can be found at https://www.videolan.org/vlc/.
+
+The name VLC Media Player® as well as related names, marks, emblems and images are registered trademarks of their respective owners.
+
 ## About
 
-[VLC Media Player](https://www.videolan.org/vlc/) portable app made with 🚀 [Portapps](https://portapps.io).<br />
+VLC Media Player portable app made with 🚀 [Portapps](https://portapps.io).<br />
 Documentation and downloads can be found on https://portapps.io/app/vlc-portable/
 
 ## How can I help ?
