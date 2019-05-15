@@ -12,13 +12,15 @@
 
 ## Notice of Non-Affiliation and Disclaimer
 
-Portapps is not affiliated, associated, authorized, endorsed by, or in any way officially connected with VLC Media Player, or any of its subsidiaries or its affiliates. The official VLC Media Player website can be found at https://www.videolan.org/vlc/.
+Portapps is not affiliated, associated, authorized, endorsed by, or in any way officially connected with VLC Media Player™, or any of its subsidiaries or its affiliates.
 
-The name VLC Media Player® as well as related names, marks, emblems and images are registered trademarks of their respective owners.
+The official VLC Media Player™ website can be found at https://www.videolan.org/vlc/.
+
+The name VLC Media Player™ as well as related names, marks, emblems and images are registered trademarks of their respective owners.
 
 ## About
 
-VLC Media Player portable app made with 🚀 [Portapps](https://portapps.io).<br />
+VLC Media Player™ portable app made with 🚀 [Portapps](https://portapps.io).<br />
 Documentation and downloads can be found on https://portapps.io/app/vlc-portable/
 
 ## How can I help ?
