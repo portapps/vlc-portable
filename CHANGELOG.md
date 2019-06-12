@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.7-6 (2019/06/12)
+
+* VLC Media Player 3.0.7.1
+
 ## 3.0.7-5 (2019/06/07)
 
 * VLC Media Player 3.0.7
