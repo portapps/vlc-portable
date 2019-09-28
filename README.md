@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://portapps.io/app/vlc-portable/#download"><img src="https://img.shields.io/github/release/portapps/vlc-portable.svg?style=flat-square" alt="GitHub release"></a>
   <a href="https://portapps.io/app/vlc-portable/#download"><img src="https://img.shields.io/github/downloads/portapps/vlc-portable/total.svg?style=flat-square" alt="Total downloads"></a>
-  <a href="https://github.com/portapps/portapps"><img src="https://img.shields.io/badge/portapps-1.25.0-479fdb.svg?style=flat-square" alt="Portapps version"></a>
+  <a href="https://github.com/portapps/portapps"><img src="https://img.shields.io/badge/portapps-1.26.1-479fdb.svg?style=flat-square" alt="Portapps version"></a>
   <a href="https://travis-ci.com/portapps/vlc-portable"><img src="https://img.shields.io/travis/com/portapps/vlc-portable/master.svg?style=flat-square" alt="Build Status"></a>
   <a href="https://goreportcard.com/report/github.com/portapps/vlc-portable"><img src="https://goreportcard.com/badge/github.com/portapps/vlc-portable?style=flat-square" alt="Go Report"></a>
   <a href="https://www.codacy.com/app/portapps/vlc-portable"><img src="https://img.shields.io/codacy/grade/10aa1a67c6154f7faab71fef032b4786.svg?style=flat-square" alt="Code Quality"></a>
@@ -30,8 +30,8 @@ All kinds of contributions are welcome :raised_hands:!<br />
 The most basic way to show your support is to star :star2: the project, or to raise issues :speech_balloon:<br />
 But we're not gonna lie to each other, I'd rather you buy me a beer or two :beers:!
 
-[![Support me on Patreon](https://portapps.io/img/patreon.png)](https://www.patreon.com/crazymax) 
-[![Paypal Donate](https://portapps.io/img/paypal-donate.png)](https://www.paypal.me/crazyws)
+[![Support me on Patreon](https://portapps.io/img/donate/patreon.png)](https://www.patreon.com/crazymax) 
+[![Paypal Donate](https://portapps.io/img/donate/paypal.png)](https://www.paypal.me/crazyws)
 
 ## License
 
