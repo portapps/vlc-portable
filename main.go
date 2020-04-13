@@ -5,9 +5,10 @@ package main
 import (
 	"os"
 
-	. "github.com/portapps/portapps"
-	"github.com/portapps/portapps/pkg/registry"
-	"github.com/portapps/portapps/pkg/utl"
+	"github.com/portapps/portapps/v2"
+	"github.com/portapps/portapps/v2/pkg/log"
+	"github.com/portapps/portapps/v2/pkg/registry"
+	"github.com/portapps/portapps/v2/pkg/utl"
 )
 
 type config struct {
@@ -15,7 +16,7 @@ type config struct {
 }
 
 var (
-	app *App
+	app *portapps.App
 	cfg *config
 )
 
@@ -28,8 +29,8 @@ func init() {
 	}
 
 	// Init app
-	if app, err = NewWithCfg("vlc-portable", "VLC", cfg); err != nil {
-		Log.Fatal().Err(err).Msg("Cannot initialize application. See log file for more info.")
+	if app, err = portapps.NewWithCfg("vlc-portable", "VLC", cfg); err != nil {
+		log.Fatal().Err(err).Msg("Cannot initialize application. See log file for more info.")
 	}
 }
 
@@ -72,13 +73,12 @@ func main() {
 	// Handle reg key
 	regsPath := utl.CreateFolder(app.RootPath, "reg")
 	regFile := utl.PathJoin(regsPath, "VLC.reg")
-	regKey := registry.ExportImport{
+	regKey := registry.Key{
 		Key:  `HKCU\Software\VideoLAN\VLC`,
 		Arch: "32",
-		File: regFile,
 	}
-	if err := registry.ImportKey(regKey); err != nil {
-		Log.Warn().Err(err).Msg("Cannot import registry key")
+	if err := registry.Import(regKey, regFile); err != nil {
+		log.Warn().Err(err).Msg("Cannot import registry key")
 	}
 
 	// On exit
@@ -86,24 +86,24 @@ func main() {
 		// Copy back to data
 		if _, err := os.Stat(dataDvdcssPath); err == nil {
 			if err = utl.CopyFolder(dataDvdcssPath, roamingDvdcssPath); err != nil {
-				Log.Warn().Err(err).Msgf("Cannot copy back %s", dataDvdcssPath)
+				log.Warn().Err(err).Msgf("Cannot copy back %s", dataDvdcssPath)
 			}
 		}
 		if _, err := os.Stat(roamingMlXspf); err == nil {
 			if err = utl.CopyFile(roamingMlXspf, dataMlXspf); err != nil {
-				Log.Warn().Err(err).Msgf("Cannot copy back %s", roamingMlXspf)
+				log.Warn().Err(err).Msgf("Cannot copy back %s", roamingMlXspf)
 			}
 		}
 		if _, err := os.Stat(roamingVlcQtInterface); err == nil {
 			if err = utl.CopyFile(roamingVlcQtInterface, dataVlcQtInterface); err != nil {
-				Log.Warn().Err(err).Msgf("Cannot copy back %s", roamingVlcQtInterface)
+				log.Warn().Err(err).Msgf("Cannot copy back %s", roamingVlcQtInterface)
 			}
 		}
 
 		// Export registry key
 		os.Remove(regFile)
-		if err := registry.ExportKey(regKey); err != nil {
-			Log.Warn().Err(err).Msg("Cannot export registry key")
+		if err := registry.Export(regKey, regFile); err != nil {
+			log.Warn().Err(err).Msg("Cannot export registry key")
 		}
 
 		// Remove tmp and roaming path
