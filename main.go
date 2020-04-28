@@ -71,13 +71,12 @@ func main() {
 	}
 
 	// Handle reg key
-	regsPath := utl.CreateFolder(app.RootPath, "reg")
-	regFile := utl.PathJoin(regsPath, "VLC.reg")
+	regFile := utl.PathJoin(utl.CreateFolder(app.RootPath, "reg"), "VLC.reg")
 	regKey := registry.Key{
 		Key:  `HKCU\Software\VideoLAN\VLC`,
 		Arch: "32",
 	}
-	if err := registry.Import(regKey, regFile); err != nil {
+	if err := regKey.Import(regFile); err != nil {
 		log.Warn().Err(err).Msg("Cannot import registry key")
 	}
 
@@ -102,7 +101,7 @@ func main() {
 
 		// Export registry key
 		os.Remove(regFile)
-		if err := registry.Export(regKey, regFile); err != nil {
+		if err := regKey.Export(regFile); err != nil {
 			log.Warn().Err(err).Msg("Cannot export registry key")
 		}
 
