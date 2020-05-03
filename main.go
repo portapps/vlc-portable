@@ -12,6 +12,7 @@ import (
 )
 
 type config struct {
+	Cleanup bool   `yaml:"cleanup" mapstructure:"cleanup"`
 	Verbose string `yaml:"verbose" mapstructure:"verbose"`
 }
 
@@ -25,6 +26,7 @@ func init() {
 
 	// Default config
 	cfg = &config{
+		Cleanup: false,
 		Verbose: "1",
 	}
 
@@ -45,7 +47,7 @@ func main() {
 	}
 
 	// VLC paths
-	vlcRoamingPath := utl.PathJoin(utl.RoamingPath(), "vlc")
+	vlcRoamingPath := utl.PathJoin(os.Getenv("APPDATA"), "vlc")
 	vlcTmpPath := utl.CreateFolder(app.AppPath, "tmp")
 
 	// Set env vars
@@ -57,17 +59,21 @@ func main() {
 	dataDvdcssPath := utl.PathJoin(app.DataPath, "dvdcss")
 	dataMlXspf := utl.PathJoin(app.DataPath, "ml.xspf")
 	dataVlcQtInterface := utl.PathJoin(app.DataPath, "vlc-qt-interface.ini")
-	roamingDvdcssPath := utl.PathJoin(utl.RoamingPath(), "dvdcss")
+	roamingDvdcssPath := utl.PathJoin(os.Getenv("APPDATA"), "dvdcss")
 	roamingMlXspf := utl.PathJoin(vlcRoamingPath, "ml.xspf")
 	roamingVlcQtInterface := utl.PathJoin(vlcRoamingPath, "vlc-qt-interface.ini")
 
 	// Copy existing files from data to roaming folder for the current user
 	utl.CreateFolder(vlcRoamingPath)
 	if _, err := os.Stat(dataMlXspf); err == nil {
-		utl.CopyFile(dataMlXspf, roamingMlXspf)
+		if err := utl.CopyFile(dataMlXspf, roamingMlXspf); err != nil {
+			log.Error().Err(err).Msgf("Cannot copy %s", dataMlXspf)
+		}
 	}
 	if _, err := os.Stat(dataVlcQtInterface); err == nil {
-		utl.CopyFile(dataVlcQtInterface, roamingVlcQtInterface)
+		if err := utl.CopyFile(dataVlcQtInterface, roamingVlcQtInterface); err != nil {
+			log.Error().Err(err).Msgf("Cannot copy %s", dataVlcQtInterface)
+		}
 	}
 
 	// Handle reg key
@@ -99,15 +105,21 @@ func main() {
 			}
 		}
 
-		// Export registry key
-		os.Remove(regFile)
+		// Export reg key
 		if err := regKey.Export(regFile); err != nil {
-			log.Warn().Err(err).Msg("Cannot export registry key")
+			log.Error().Err(err).Msg("Cannot export registry key")
 		}
 
-		// Remove tmp and roaming path
-		os.RemoveAll(vlcTmpPath)
-		os.RemoveAll(vlcRoamingPath)
+		// Cleanup
+		if cfg.Cleanup {
+			utl.Cleanup([]string{
+				vlcRoamingPath,
+				vlcTmpPath,
+			})
+			if err := regKey.Delete(true); err != nil {
+				log.Error().Err(err).Msg("Cannot remove registry key")
+			}
+		}
 	}()
 
 	// Launch

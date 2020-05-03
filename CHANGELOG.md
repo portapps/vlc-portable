@@ -3,6 +3,7 @@
 ## 3.0.10-8 (2020/05/03)
 
 * VLC Media Player 3.0.10
+* Add `cleanup` config
 * Portapps 2.2.4
 
 ## 3.0.8-7 (2019/08/19)
