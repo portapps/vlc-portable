@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.11-9 (2020/06/29)
+
+* VLC Media Player 3.0.11
+* Portapps 2.4.4
+
 ## 3.0.10-8 (2020/05/03)
 
 * VLC Media Player 3.0.10
