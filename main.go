@@ -5,10 +5,10 @@ package main
 import (
 	"os"
 
-	"github.com/portapps/portapps/v2"
-	"github.com/portapps/portapps/v2/pkg/log"
-	"github.com/portapps/portapps/v2/pkg/registry"
-	"github.com/portapps/portapps/v2/pkg/utl"
+	"github.com/portapps/portapps/v3"
+	"github.com/portapps/portapps/v3/pkg/log"
+	"github.com/portapps/portapps/v3/pkg/registry"
+	"github.com/portapps/portapps/v3/pkg/utl"
 )
 
 type config struct {
@@ -51,9 +51,9 @@ func main() {
 	vlcTmpPath := utl.CreateFolder(app.AppPath, "tmp")
 
 	// Set env vars
-	utl.OverrideEnv("VLC_PLUGIN_PATH", utl.CreateFolder(app.DataPath, "plugins"))
-	utl.OverrideEnv("VLC_VERBOSE", cfg.Verbose)
-	utl.OverrideEnv("TEMP", vlcTmpPath)
+	os.Setenv("VLC_PLUGIN_PATH", utl.CreateFolder(app.DataPath, "plugins"))
+	os.Setenv("VLC_VERBOSE", cfg.Verbose)
+	os.Setenv("TEMP", vlcTmpPath)
 
 	// VLC volatile files
 	dataDvdcssPath := utl.PathJoin(app.DataPath, "dvdcss")
