@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.12-10 (2021/03/24)
+
+* VLC Media Player 3.0.12
+* Portapps 3.3.0
+* No more win32 release
+
 ## 3.0.11-9 (2020/06/29)
 
 * VLC Media Player 3.0.11
