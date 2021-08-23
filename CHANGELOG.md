@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.16-11 (2021/08/23)
+
+* VLC Media Player 3.0.16
+* Portapps 3.3.1
+
 ## 3.0.12-10 (2021/03/24)
 
 * VLC Media Player 3.0.12
