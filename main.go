@@ -1,9 +1,9 @@
 //go:generate go install -v github.com/josephspurrier/goversioninfo/cmd/goversioninfo
-//go:generate goversioninfo -icon=res/papp.ico -manifest=res/papp.manifest
 package main
 
 import (
 	"os"
+	"path/filepath"
 
 	"github.com/portapps/portapps/v3"
 	"github.com/portapps/portapps/v3/pkg/log"
@@ -38,16 +38,16 @@ func init() {
 
 func main() {
 	utl.CreateFolder(app.DataPath)
-	app.Process = utl.PathJoin(app.AppPath, "vlc.exe")
+	app.Process = filepath.Join(app.AppPath, "vlc.exe")
 	app.Args = []string{
-		"--vlm-conf=" + utl.PathJoin(app.DataPath, "vlcrc"),
-		"--config=" + utl.PathJoin(app.DataPath, "vlcrc"),
+		"--vlm-conf=" + filepath.Join(app.DataPath, "vlcrc"),
+		"--config=" + filepath.Join(app.DataPath, "vlcrc"),
 		"--no-plugins-cache",
 		"--no-qt-updates-notif",
 	}
 
 	// VLC paths
-	vlcRoamingPath := utl.PathJoin(os.Getenv("APPDATA"), "vlc")
+	vlcRoamingPath := filepath.Join(os.Getenv("APPDATA"), "vlc")
 	vlcTmpPath := utl.CreateFolder(app.AppPath, "tmp")
 
 	// Set env vars
@@ -56,12 +56,12 @@ func main() {
 	os.Setenv("TEMP", vlcTmpPath)
 
 	// VLC volatile files
-	dataDvdcssPath := utl.PathJoin(app.DataPath, "dvdcss")
-	dataMlXspf := utl.PathJoin(app.DataPath, "ml.xspf")
-	dataVlcQtInterface := utl.PathJoin(app.DataPath, "vlc-qt-interface.ini")
-	roamingDvdcssPath := utl.PathJoin(os.Getenv("APPDATA"), "dvdcss")
-	roamingMlXspf := utl.PathJoin(vlcRoamingPath, "ml.xspf")
-	roamingVlcQtInterface := utl.PathJoin(vlcRoamingPath, "vlc-qt-interface.ini")
+	dataDvdcssPath := filepath.Join(app.DataPath, "dvdcss")
+	dataMlXspf := filepath.Join(app.DataPath, "ml.xspf")
+	dataVlcQtInterface := filepath.Join(app.DataPath, "vlc-qt-interface.ini")
+	roamingDvdcssPath := filepath.Join(os.Getenv("APPDATA"), "dvdcss")
+	roamingMlXspf := filepath.Join(vlcRoamingPath, "ml.xspf")
+	roamingVlcQtInterface := filepath.Join(vlcRoamingPath, "vlc-qt-interface.ini")
 
 	// Copy existing files from data to roaming folder for the current user
 	utl.CreateFolder(vlcRoamingPath)
@@ -77,7 +77,7 @@ func main() {
 	}
 
 	// Handle reg key
-	regFile := utl.PathJoin(utl.CreateFolder(app.RootPath, "reg"), "VLC.reg")
+	regFile := filepath.Join(utl.CreateFolder(app.RootPath, "reg"), "VLC.reg")
 	regKey := registry.Key{
 		Key:  `HKCU\Software\VideoLAN\VLC`,
 		Arch: "32",
